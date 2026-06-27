@@ -1,0 +1,8 @@
+listeners:
+  - name: web
+    protocol: HTTP
+    port: 8000
+
+    allowedRoutes:
+      namespaces:
+        from: All
