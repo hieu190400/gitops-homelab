@@ -13,3 +13,6 @@
 Proxmox
     ↓
 k3s (3 nodes)
+
+
+kubectl apply -f bootstrap\root-app.yaml

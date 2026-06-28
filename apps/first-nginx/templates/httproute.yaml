@@ -3,7 +3,6 @@ kind: HTTPRoute
 
 metadata:
   name: nginx
-  namespace: demo
 spec:
   parentRefs:
     - name: web
