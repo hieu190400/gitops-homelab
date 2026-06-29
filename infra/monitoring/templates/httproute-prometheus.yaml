@@ -1,0 +1,19 @@
+{{- if .Values.prometheus.route.enabled }}
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+
+metadata:
+  name: prometheus
+  namespace: {{ .Release.Namespace }}
+spec:
+  parentRefs:
+    {{- toYaml .Values.gateway | nindent 4 }}
+
+  hostnames:
+    - {{ .Values.prometheus.route.host | quote }}
+
+  rules:
+    - backendRefs:
+        - name: {{ printf "%s-kube-prometheus-prometheus" .Release.Name }}
+          port: 9090
+{{- end }}

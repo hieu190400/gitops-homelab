@@ -1,6 +1,17 @@
 grafana:
   enabled: true
+  route:
+    enabled: true
+    host: grafana.lab.local
 
 prometheus:
   prometheusSpec:
     retention: 7d
+  route:
+    enabled: true
+    host: prometheus.lab.local
+
+gateway:
+  - name: web
+    namespace: infra
+    sectionName: web

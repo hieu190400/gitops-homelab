@@ -1,0 +1,19 @@
+{{- if .Values.grafana.route.enabled }}
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+
+metadata:
+  name: grafana
+  namespace: {{ .Release.Namespace }}
+spec:
+  parentRefs:
+    {{- toYaml .Values.gateway | nindent 4 }}
+
+  hostnames:
+    - {{ .Values.grafana.route.host | quote }}
+
+  rules:
+    - backendRefs:
+        - name: {{ printf "%s-grafana" .Release.Name }}
+          port: 80
+{{- end }}
