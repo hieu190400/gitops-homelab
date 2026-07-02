@@ -12,6 +12,8 @@ prometheus:
     host: prometheus.lab.local
 
 gateway:
-  - name: web
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: web
     namespace: infra
     sectionName: web
