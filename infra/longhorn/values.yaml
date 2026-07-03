@@ -3,6 +3,27 @@ longhorn:
     enabled: true
     host: longhorn.lab.local
 
+  # resources:
+    #   requests:
+    #     cpu: 100m
+    #     memory: 128Mi
+
+    #   limits:
+    #     cpu: 500m
+    #     memory: 512Mi
+
+  metrics:
+    serviceMonitor:
+      enabled: true
+
+  defaultSettings:
+    defaultReplicaCount: 1
+    storageReservedPercentageForDefaultDisk: 60 
+    storageMinimalAvailablePercentage: 10
+
+  preUpgradeChecker:
+    jobEnabled: false
+
 gateway:
   - group: gateway.networking.k8s.io
     kind: Gateway
@@ -10,24 +31,5 @@ gateway:
     namespace: infra
     sectionName: web
 
-resources:
-# requests:
-#   cpu: 100m
-#   memory: 128Mi
 
-# limits:
-#   cpu: 500m
-#   memory: 512Mi
-
-metrics:
-  serviceMonitor:
-    enabled: true
-
-defaultSettings:
-  defaultReplicaCount: 1
-  storageReservedPercentageForDefaultDisk: 60 
-  storageMinimalAvailablePercentage: 10
-
-preUpgradeChecker:
-  jobEnabled: false
 
