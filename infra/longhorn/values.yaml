@@ -1,0 +1,30 @@
+longhorn:
+  route:
+    enabled: true
+    host: longhorn.lab.local
+
+gateway:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: web
+    namespace: infra
+    sectionName: web
+
+resources:
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
+
+# limits:
+#   cpu: 500m
+#   memory: 512Mi
+
+metrics:
+  serviceMonitor:
+    enabled: true
+
+defaultSettings:
+  defaultReplicaCount: 1
+  storageReservedPercentageForDefaultDisk: 60 
+  storageMinimalAvailablePercentage: 10
+
