@@ -3,15 +3,6 @@ longhorn:
     enabled: true
     host: longhorn.lab.local
 
-  # resources:
-    #   requests:
-    #     cpu: 100m
-    #     memory: 128Mi
-
-    #   limits:
-    #     cpu: 500m
-    #     memory: 512Mi
-
   metrics:
     serviceMonitor:
       enabled: true
