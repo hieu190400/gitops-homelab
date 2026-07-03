@@ -28,3 +28,6 @@ defaultSettings:
   storageReservedPercentageForDefaultDisk: 60 
   storageMinimalAvailablePercentage: 10
 
+preUpgradeChecker:
+  jobEnabled: false
+
