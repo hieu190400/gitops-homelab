@@ -1,42 +1,44 @@
-grafana:
-  enabled: true
-  route:
+kube-prometheus-stack:
+  grafana:
+    enabled: true
+    persistence:
+      enabled: true
+      storageClassName: longhorn
+      size: 1Gi
+
+  prometheus:
+    prometheusSpec:
+      retention: 1d
+      retentionSize: 1500MB
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: longhorn
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 2Gi
+
+  alertmanager:
+    alertmanagerSpec:
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: longhorn
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 512Mi
+
+route:
+  grafana:
     enabled: true
     host: grafana.lab.local
-  persistence:
-    enabled: true
-    storageClassName: longhorn
-    size: 1Gi
-
-prometheus:
-  prometheusSpec:
-    retention: 1d
-    retentionSize: 1500MB
-    storageSpec:
-    volumeClaimTemplate:
-      spec:
-        storageClassName: longhorn
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 2Gi
-  route:
+  prometheus:
     enabled: true
     host: prometheus.lab.local
-
-
-alertmanager:
-  alertmanagerSpec:
-    storage:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: longhorn
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 512Mi
 
 gateway:
   - group: gateway.networking.k8s.io
