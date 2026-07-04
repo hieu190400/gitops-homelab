@@ -3,28 +3,28 @@ grafana:
   route:
     enabled: true
     host: grafana.lab.local
-  grafana:
-    persistence:
-      enabled: true
-      storageClassName: longhorn
-      size: 1Gi
+  persistence:
+    enabled: true
+    storageClassName: longhorn
+    size: 1Gi
 
 prometheus:
   prometheusSpec:
     retention: 1d
     retentionSize: 1500MB
+    storageSpec:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: longhorn
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
   route:
     enabled: true
     host: prometheus.lab.local
-  storageSpec:
-      volumeClaimTemplate:
-        spec:
-          storageClassName: longhorn
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 2Gi
+
 
 alertmanager:
   alertmanagerSpec:
