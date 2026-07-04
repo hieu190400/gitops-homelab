@@ -3,7 +3,7 @@ kube-prometheus-stack:
     enabled: true
     persistence:
       enabled: true
-      storageClassName: longhorn
+      storageClassName: longhorn-dev
       size: 1Gi
 
   prometheus:
@@ -13,7 +13,7 @@ kube-prometheus-stack:
       storageSpec:
         volumeClaimTemplate:
           spec:
-            storageClassName: longhorn
+            storageClassName: longhorn-dev
             accessModes:
               - ReadWriteOnce
             resources:
@@ -25,7 +25,7 @@ kube-prometheus-stack:
       storage:
         volumeClaimTemplate:
           spec:
-            storageClassName: longhorn
+            storageClassName: longhorn-dev
             accessModes:
               - ReadWriteOnce
             resources:
