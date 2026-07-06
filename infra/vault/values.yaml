@@ -1,0 +1,50 @@
+vault:
+  route:
+    enabled: true
+    host: vault.lab.local
+
+  injector: # use external injector
+    enabled: false
+
+  server:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+    ha:
+      enabled: true
+      replicas: 3
+      raft:
+        enabled: true
+
+    dataStorage:
+      enabled: true
+      storageClass: longhorn-critical
+      size: 2Gi
+      accessMode: ReadWriteOnce
+
+    ingress:
+      enabled: false
+
+    auditStorage: # disable audit storage for now, as it requires a separate storage class
+      enabled: false
+
+    standalone:
+      enabled: false
+
+    ui:
+      enabled: true
+
+    service:
+      enabled: true
+
+
+gateway:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: web
+    namespace: infra
+    sectionName: web
