@@ -16,7 +16,7 @@ spec:
     - backendRefs:
         - group: ''	
           kind: Service
-          name: {{ printf "%s-vault" .Release.Name }}
+          name: vault
           port: 8200
           weight: 1	
       matches:	

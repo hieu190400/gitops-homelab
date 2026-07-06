@@ -22,8 +22,8 @@ vault:
 
     dataStorage:
       enabled: true
-      storageClass: longhorn-critical
-      size: 2Gi
+      storageClass: longhorn-dev
+      size: 512Mi
       accessMode: ReadWriteOnce
 
     ingress:
