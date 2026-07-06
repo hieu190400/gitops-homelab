@@ -11,6 +11,8 @@ longhorn:
     defaultReplicaCount: 1
     storageReservedPercentageForDefaultDisk: 60 
     storageMinimalAvailablePercentage: 10
+    backupTarget: s3://longhorn@ap-northeast-1/
+    backupTargetCredentialSecret: minio-secret
 
   persistence:
     defaultClassReplicaCount: 1
