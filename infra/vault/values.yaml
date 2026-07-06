@@ -41,7 +41,7 @@ vault:
 
     dataStorage:
       enabled: true
-      storageClass: longhorn-dev
+      storageClass: vault-backup
       size: 512Mi
       accessMode: ReadWriteOnce
 
