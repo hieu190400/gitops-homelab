@@ -14,7 +14,6 @@ loki:
         ruler: loki-ruler
       use_thanos_objstore: true
       
-
       object_store:
         type: s3
         storage_prefix: dev
@@ -23,4 +22,13 @@ loki:
           endpoint: ${AWS_ENDPOINT}
           access_key_id: ${AWS_ACCESS_KEY_ID}
           secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-        
+
+    schemaConfig:
+      configs:
+        - from: "2026-07-08"
+          store: tsdb
+          object_store: s3
+          schema: v13
+          index:
+            prefix: loki_index_
+            period: 24h
