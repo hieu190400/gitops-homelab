@@ -9,11 +9,15 @@ loki:
     auth_enabled: false
 
     storage:
+      bucketNames:
+        chunks: loki-chunks
+        ruler: loki-ruler
       use_thanos_objstore: true
+      
 
       object_store:
         type: s3
-        storage_prefix: loki
+        storage_prefix: dev
         s3:
           region: us-east-1
           endpoint: ${AWS_ENDPOINT}
