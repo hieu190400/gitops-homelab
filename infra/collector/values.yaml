@@ -27,9 +27,9 @@ opentelemetry-collector:
         endpoint: http://loki:3100/otlp
 
       otlp/tempo:
-      endpoint: tempo:4317
-      tls:
-        insecure: true
+        endpoint: tempo:4317
+        tls:
+          insecure: true
 
     service:
       pipelines:
