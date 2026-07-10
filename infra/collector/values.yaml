@@ -18,3 +18,17 @@ opentelemetry-collector:
     limits:
       cpu: 250m
       memory: 512Mi
+
+  config:
+    exporters:
+      debug: {}
+
+      otlphttp/loki:
+        endpoint: http://loki.observability.svc.cluster.local:3100/otlp
+
+    service:
+      pipelines:
+        logs:
+          exporters:
+            - debug
+            - otlphttp/loki
