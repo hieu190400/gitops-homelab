@@ -8,6 +8,11 @@ loki:
 
     extraArgs:
       - -config.expand-env=true
+      
+  singleBinary:
+    persistence:
+      size: 2Gi
+      storageClass: longhorn-dev
 
   loki:
     auth_enabled: false
