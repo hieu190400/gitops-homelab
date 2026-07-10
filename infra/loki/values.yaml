@@ -16,6 +16,7 @@ loki:
       bucketNames:
         chunks: loki-chunks
         ruler: loki-ruler
+
       use_thanos_objstore: true
       
       object_store:
@@ -37,3 +38,16 @@ loki:
           index:
             prefix: loki_index_
             period: 24h
+
+  chunksCache:
+    allocatedMemory: 256
+    allocatedCPU: 100m
+
+    l2:
+      enabled: false
+      allocatedMemory: 128
+      allocatedCPU: 100m
+
+  resultsCache:
+    allocatedMemory: 128
+    allocatedCPU: 100m
