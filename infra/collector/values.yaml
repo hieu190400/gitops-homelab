@@ -26,9 +26,23 @@ opentelemetry-collector:
       otlphttp/loki:
         endpoint: http://loki:3100/otlp
 
+      otlp/tempo:
+      endpoint: tempo:4317
+      tls:
+        insecure: true
+
     service:
       pipelines:
         logs:
           exporters:
             - debug
             - otlphttp/loki
+        
+        traces:
+          exporters:
+            - debug
+            - otlp/tempo
+
+          processors:
+            - memory_limiter
+            - batch
