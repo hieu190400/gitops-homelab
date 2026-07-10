@@ -1,0 +1,35 @@
+tempo:
+  tempo:
+    reportingEnabled: false
+
+    extraEnvFrom:
+      - secretRef:
+          name: loki-minio
+
+    storage:
+      trace:
+        s3:
+          bucket: tempo
+          endpoint: ${AWS_ENDPOINT}
+          access_key: ${AWS_ACCESS_KEY_ID}
+          secret_key: ${AWS_SECRET_ACCESS_KEY}
+          insecure: true
+
+    resources:
+      requests:
+        cpu: 50m
+        memory: 512Mi
+
+      limits:
+        cpu: 500m
+        memory: 1024Mi
+    
+    metricsGenerator:
+      enabled: false
+
+  traces:
+    otlp:
+      grpc:
+        enabled: true
+      http:
+        enabled: true

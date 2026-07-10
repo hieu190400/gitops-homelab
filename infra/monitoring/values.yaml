@@ -5,6 +5,15 @@ kube-prometheus-stack:
       enabled: true
       storageClassName: longhorn-standard
       size: 1Gi
+    
+    additionalDataSources:
+      - name: Loki
+        uid: loki
+        type: loki
+        access: proxy
+        url: http://loki:3100
+        isDefault: false
+        editable: true
 
   prometheus:
     prometheusSpec:
@@ -31,6 +40,11 @@ kube-prometheus-stack:
             resources:
               requests:
                 storage: 512Mi
+  
+  kubelet:
+    serviceMonitor:
+      resourceInterval: 30s
+      cAdvisorInterval: 30s
 
 route:
   grafana:

@@ -1,0 +1,16 @@
+apiVersion: v2
+
+name: opentelemetry-collector
+
+description: A Helm chart for deploying OpenTelemetry collector
+
+type: application
+
+version: 0.1.0
+
+appVersion: "1.0"
+
+dependencies:
+  - name: opentelemetry-operator
+    repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+    version: 0.119.0

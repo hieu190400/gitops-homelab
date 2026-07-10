@@ -1,0 +1,16 @@
+apiVersion: v2
+
+name: tempo-trace
+
+description: A Helm chart for deploying Tempo trace resources
+
+type: application
+
+version: 0.1.0
+
+appVersion: "1.0"
+
+dependencies:
+  - name: tempo
+    repository: https://grafana-community.github.io/helm-charts
+    version: 1.24.4
