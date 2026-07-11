@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: registry.lab.internal/k8s-nodegoat
-  tag: k8s-v0.0.2.4
+  tag: k8s-v0.0.2.5
   pullPolicy: IfNotPresent
 
 container:
