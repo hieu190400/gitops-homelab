@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nodegoat-deployment
   annotations:
-    instrumentation.opentelemetry.io/inject-nodejs: "true"
+    instrumentation.opentelemetry.io/inject-nodejs: "monitoring/default"
   labels:
     {{- include "nodegoat.labels" . | nindent 4 }}
 spec:
