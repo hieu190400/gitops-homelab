@@ -11,7 +11,7 @@ spec:
       sectionName: web
 
   hostnames:
-    - argocd.lab.local
+    - argocd.lab.internal
 
   rules:
     - backendRefs:

@@ -10,7 +10,7 @@ spec:
       sectionName: web
 
   hostnames:
-    - nginx.lab.local
+    - nginx.lab.internal
 
   rules:
     - backendRefs:

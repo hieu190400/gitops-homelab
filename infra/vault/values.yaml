@@ -1,7 +1,7 @@
 vault:
   route:
     enabled: true
-    host: vault.lab.local
+    host: vault.lab.internal
 
   injector: # use external injector
     enabled: false

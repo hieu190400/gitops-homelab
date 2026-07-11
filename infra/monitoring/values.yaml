@@ -57,10 +57,10 @@ kube-prometheus-stack:
 route:
   grafana:
     enabled: true
-    host: grafana.lab.local
+    host: grafana.lab.internal
   prometheus:
     enabled: true
-    host: prometheus.lab.local
+    host: prometheus.lab.internal
 
 gateway:
   - group: gateway.networking.k8s.io

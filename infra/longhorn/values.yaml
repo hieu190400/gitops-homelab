@@ -1,7 +1,7 @@
 longhorn:
   route:
     enabled: true
-    host: longhorn.lab.local
+    host: longhorn.lab.internal
 
   metrics:
     serviceMonitor:
