@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodegoat-deployment
+  labels:
+    {{- include "nodegoat.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "nodegoat.labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "nodegoat.labels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: nodegoat
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.container.port }}
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+
+        envFrom:
+        - secretRef:
+            name: mongodb-auth
