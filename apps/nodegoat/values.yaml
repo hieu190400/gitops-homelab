@@ -22,3 +22,7 @@ service:
 
 route:
   host: nodegoat.lab.internal
+
+
+dbInitJob:
+  enabled: true
