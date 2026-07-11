@@ -1,0 +1,27 @@
+mongodb:
+  architecture: standalone
+
+  auth:
+    enabled: true
+
+    existingSecret: mongodb-auth
+
+  persistence:
+    enabled: true
+    size: 2Gi
+    storageClass: longhorn-dev
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  
+  # metrics:
+  #   enabled: true
+
+  #   serviceMonitor:
+  #     enabled: true
