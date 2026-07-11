@@ -3,7 +3,10 @@ mongodb:
 
   auth:
     enabled: true
-
+    usernames:
+      - hieu
+    databases: 
+      - nodegoat
     existingSecret: mongodb-auth
 
   persistence:
