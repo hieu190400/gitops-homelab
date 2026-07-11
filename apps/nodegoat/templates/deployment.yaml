@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nodegoat-deployment
-  annotations:
-    instrumentation.opentelemetry.io/inject-nodejs: "true"
   labels:
     {{- include "nodegoat.labels" . | nindent 4 }}
 spec:
@@ -13,6 +11,8 @@ spec:
       {{- include "nodegoat.labels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        instrumentation.opentelemetry.io/inject-nodejs: "true"
       labels:
         {{- include "nodegoat.labels" . | nindent 8 }}
     spec:
