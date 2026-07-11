@@ -24,10 +24,15 @@ spec:
         - containerPort: {{ .Values.container.port }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
-        
-        envFrom:
-        - secretRef:
-            name: mongodb-auth
+        env:
+        - name: MONGODB_URI
+          value: mongodb://mongodb:27017/nodegoat
         command:
-          - npm
-          - start
+          - /bin/sh
+          - -c
+          - |
+            until nc -z mongodb 27017; do
+              sleep 2
+            done
+            node artifacts/db-reset.js
+            exec npm start
