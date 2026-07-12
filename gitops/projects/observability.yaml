@@ -11,7 +11,7 @@ spec:
     - '*'
 
   destinations:
-    - namespace: monitoring
+    - namespace: '*'
       server: https://kubernetes.default.svc
 
   clusterResourceWhitelist:
