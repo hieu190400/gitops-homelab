@@ -2,21 +2,30 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: traefik-app
+  name: metrics
   namespace: argocd
 
 spec:
-  project: default
+  project: observability
+  
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: infra/traefik 
+    path: platform/observability/metrics
+    helm:
+      releaseName: metrics
+      
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system 
-    
+    namespace: monitoring
+
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true 
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+

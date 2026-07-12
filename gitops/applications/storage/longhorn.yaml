@@ -2,22 +2,30 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: root-app
+  name: longhorn
   namespace: argocd
 
 spec:
-  project: default
-
+  project: storage
+  
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: gitops/domains
+    path: platform/storage/longhorn
+    helm:
+      releaseName: longhorn
+      
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: longhorn-system
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+

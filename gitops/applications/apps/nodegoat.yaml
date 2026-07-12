@@ -2,22 +2,26 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: root-app
+  name: nodegoat
   namespace: argocd
 
 spec:
-  project: default
-
+  project: apps
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: gitops/domains
+    path: apps/nodegoat
+    helm:
+      releaseName: nodegoat
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: demo
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true

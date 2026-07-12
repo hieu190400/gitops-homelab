@@ -2,18 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: collector-app
+  name: loki
   namespace: argocd
 
 spec:
-  project: default
+  project: observability
   
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: infra/collector
+    path: platform/observability/loki
     helm:
-      releaseName: collector
+      releaseName: loki
       
 
   destination:

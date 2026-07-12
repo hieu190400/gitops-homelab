@@ -1,0 +1,48 @@
+gateway:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: web
+    namespace: infra
+    sectionName: web
+
+route:
+  enabled: true
+  host: authentik.lab.internal
+
+
+authentik:
+  authentik:
+    secret_key: file:///authentik/bootstrap/secret-key
+
+    error_reporting:
+      enabled: false
+
+    postgresql:
+      password: file:///authentik/bootstrap/postgres-password
+
+    redis:
+      password: file:///authentik/bootstrap/redis-password
+
+  server:
+    ingress:
+      enabled: false
+
+  worker:
+    replicas: 1
+
+  postgresql:
+    enabled: true
+    auth:
+      username: authentik
+      database: authentik
+      existingSecret: authentik-db
+      secretKeys:
+        adminPasswordKey: postgres-password
+        userPasswordKey: password
+
+  redis:
+    enabled: true
+    auth:
+      enabled: true
+      existingSecret: authentik-redis
+      existingSecretPasswordKey: password

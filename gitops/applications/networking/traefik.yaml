@@ -2,26 +2,21 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: first-nginx-app
+  name: traefik-custom
   namespace: argocd
 
 spec:
-  project: default
+  project: networking
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: apps/first-nginx
-    helm:
-      releaseName: first-nginx
+    path: platform/networking/traefik 
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo
-
+    namespace: kube-system 
+    
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
-
-    syncOptions:
-      - CreateNamespace=true
+      selfHeal: true 

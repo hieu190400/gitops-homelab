@@ -2,22 +2,29 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: root-app
+  name: vault
   namespace: argocd
 
 spec:
-  project: default
-
+  project: security
+  
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: gitops/domains
+    path: platform/security/vault
+    helm:
+      releaseName: vault
+      
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: vault
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
+

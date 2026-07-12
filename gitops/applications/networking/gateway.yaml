@@ -2,22 +2,26 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: root-app
+  name: gateway-api
   namespace: argocd
 
 spec:
-  project: default
-
+  project: networking
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: gitops/domains
+    path: platform/networking/gateway
+    helm:
+      releaseName: gateway-api
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: gateway
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true

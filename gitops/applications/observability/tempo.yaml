@@ -2,23 +2,23 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: longhorn-app
+  name: tempo
   namespace: argocd
 
 spec:
-  project: default
+  project: observability
   
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: infra/longhorn
+    path: platform/observability/tempo
     helm:
-      releaseName: longhorn
+      releaseName: tempo
       
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: longhorn-system
+    namespace: monitoring
 
   syncPolicy:
     automated:
@@ -27,5 +27,4 @@ spec:
 
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true
 

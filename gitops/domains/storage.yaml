@@ -2,30 +2,21 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: monitoring-app
+  name: Storage
   namespace: argocd
 
 spec:
-  project: default
-  
+  project: storage
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: infra/monitoring
-    helm:
-      releaseName: monitoring
-      
+    path: gitops/applications/storage 
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: argocd
 
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
-
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
-
+      selfHeal: true 

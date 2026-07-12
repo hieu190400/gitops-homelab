@@ -2,21 +2,29 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: argocd-self-managed
+  name: otel-operator
   namespace: argocd
 
 spec:
-  project: default
+  project: observability
+  
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: infra/argocd 
+    path: platform/observability/otel-operator
+    helm:
+      releaseName: otel-operator
+      
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd 
+    namespace: monitoring
 
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true 
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
+

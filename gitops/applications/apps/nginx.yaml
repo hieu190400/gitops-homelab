@@ -2,17 +2,17 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: nodegoat-app
+  name: first-nginx
   namespace: argocd
 
 spec:
-  project: default
+  project: apps
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: apps/nodegoat
+    path: apps/first-nginx
     helm:
-      releaseName: nodegoat
+      releaseName: first-nginx
 
   destination:
     server: https://kubernetes.default.svc

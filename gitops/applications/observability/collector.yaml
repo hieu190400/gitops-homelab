@@ -2,22 +2,29 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: root-app
+  name: collector
   namespace: argocd
 
 spec:
-  project: default
-
+  project: observability
+  
   source:
     repoURL: https://github.com/hieu190400/gitops-homelab
     targetRevision: main
-    path: gitops/domains
+    path: platform/observability/collector
+    helm:
+      releaseName: collector
+      
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: monitoring
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
+

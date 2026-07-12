@@ -18,6 +18,4 @@ foreach ($pod in $pods) {
     foreach ($key in $keys) {
         kubectl exec -i -n $namespace $pod -- vault operator unseal $key
     }
-
-    kubectl exec -n $namespace $pod -- vault status
 }
