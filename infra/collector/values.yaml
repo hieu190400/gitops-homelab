@@ -24,8 +24,6 @@ opentelemetry-collector:
 
   config:
     exporters:
-      debug: {}
-
       otlphttp/loki:
         endpoint: http://loki:3100/otlp
 
