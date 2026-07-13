@@ -2,7 +2,7 @@ apiVersion: opentelemetry.io/v1alpha1
 kind: Instrumentation
 metadata:
   name: default
-  namespace: demo
+  namespace: apps
 spec:
   exporter:
     endpoint: http://collector-opentelemetry-collector.monitoring.svc.cluster.local:4318
