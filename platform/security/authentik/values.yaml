@@ -2,7 +2,7 @@ gateway:
   - group: gateway.networking.k8s.io
     kind: Gateway
     name: web
-    namespace: infra
+    namespace: gateway
     sectionName: web
 
 route:
