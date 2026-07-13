@@ -5,6 +5,10 @@ kube-prometheus-stack:
       enabled: true
       storageClassName: longhorn-standard
       size: 1Gi
+    admin:
+      existingSecret: grafana-admin
+      userKey: grafana-user
+      passwordKey: grafana-password
     
     additionalDataSources:
       - name: Loki

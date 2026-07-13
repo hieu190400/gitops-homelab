@@ -16,7 +16,7 @@ spec:
     - backendRefs:
         - group: ''	
           kind: Service
-          name: {{ printf "%s-kube-prometheus-prometheus" .Release.Name }}
+          name: {{ printf "%s-kube-prometheus-st-prometheus" .Release.Name }}
           port: 9090
           weight: 1	
       matches:	
