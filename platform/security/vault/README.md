@@ -1,3 +1,9 @@
+## Init and unseal
+
+kubectl exec -i -n vault  vault-0 -- vault operator init
+
+## Incident 
+
 If all the nodes end up in standby, you can recover the cluster as follows.
 
 > **Note:** This procedure assumes you are recovering an integrated Raft storage cluster. It rebuilds the cluster from the leader, so only delete the PVCs of the two replica nodes. **Do not delete the leader's PVC**, as deleting a PVC will erase that node's local Raft data.
