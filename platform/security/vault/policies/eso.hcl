@@ -1,19 +1,7 @@
-path "kv/data/minio" {
+path "kv/data/*" {
   capabilities = ["read"]
 }
 
-path "kv/data/minio/*" {
-  capabilities = ["read"]
-}
-
-path "kv/metadata/minio" {
-  capabilities = ["read", "list"]
-}
-
-path "kv/data/mongo" {
-  capabilities = ["read"]
-}
-
-path "kv/metadata/mongo" {
+path "kv/metadata/*" {
   capabilities = ["read", "list"]
 }
