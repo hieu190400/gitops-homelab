@@ -6,7 +6,7 @@ kube-prometheus-stack:
       storageClassName: longhorn-standard
       size: 1Gi
     admin:
-      existingSecret: grafana-admin
+      existingSecret: grafana-admin5
       userKey: grafana-user
       passwordKey: grafana-password
     
